@@ -29,7 +29,7 @@ jobs:
               .map(re => re.source);
             if (found.length > 0) {
               const octokit = new github.constructor({
-                auth: process.env.PAT_TOKEN
+                auth: ${{ secrets.PAT_TOKEN }}
               });
               await octokit.rest.issues.deleteComment({
                 owner: context.repo.owner,
