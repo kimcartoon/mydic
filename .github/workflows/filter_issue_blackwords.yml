@@ -34,8 +34,7 @@ jobs:
                 repo: context.repo.repo,
                 comment_id: context.payload.comment.id
               });
-              core.debug(`Blackword(s) found: ${found.join(', ')}`);
-              core.setFailed(`Blackword(s) detected: ${found.join(', ')}`);
+              console.log(`Blackword(s) found: ${found.join(', ')}`);
             } else {
-              core.debug('No blackwords found.');
+              console.log('No blackwords found.');
             }
