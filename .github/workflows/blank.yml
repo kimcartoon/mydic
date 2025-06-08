@@ -1,5 +1,16 @@
- name: Check token works
-  env:
-    PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-  run: |
-    curl -H "Authorization: token $PAT_TOKEN" https://api.github.com/repos/${{ github.repository }}
+name: Test GitHub API Token
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call GitHub API with PAT
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          curl -H "Authorization: token $PAT_TOKEN" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/user
