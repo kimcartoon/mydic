@@ -28,7 +28,10 @@ jobs:
               .filter(re => re.test(text))
               .map(re => re.source);
             if (found.length > 0) {
-              await github.rest.issues.deleteComment({
+              const octokit = new github.constructor({
+                auth: process.env.PAT_TOKEN
+              });
+              await octokit.rest.issues.deleteComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: context.payload.comment.id
