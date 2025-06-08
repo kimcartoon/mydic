@@ -1,0 +1,5 @@
+ name: Check token works
+  env:
+    PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+  run: |
+    curl -H "Authorization: token $PAT_TOKEN" https://api.github.com/repos/${{ github.repository }}
