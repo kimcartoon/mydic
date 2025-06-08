@@ -13,7 +13,7 @@ jobs:
       - name: Check for blackwords in issues/comments
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PAT_TOKEN }}
+          
           script: |
             // Add your blackwords as regex patterns (case-insensitive)
             const blackwordPatterns = [
