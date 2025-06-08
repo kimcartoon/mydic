@@ -1,0 +1,32 @@
+name: Filter Issue Blackwords
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  filter-blackwords:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for blackwords in issues/comments
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Add your blackwords as regex patterns (case-insensitive)
+            const blackwordPatterns = [
+              /fuck/i
+            ];
+            let text = '';
+            if (context.eventName === 'issues') {
+              text = (context.payload.issue.title || '') + ' ' + (context.payload.issue.body || '');
+            } else if (context.eventName === 'issue_comment') {
+              text = context.payload.comment.body || '';
+            }
+            const found = blackwordPatterns
+              .filter(re => re.test(text))
+              .map(re => re.source);
+            if (found.length > 0) {
+              core.setFailed(`Blackword(s) detected: ${found.join(', ')}`);
+            }
