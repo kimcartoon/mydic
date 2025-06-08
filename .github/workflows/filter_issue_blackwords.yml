@@ -49,6 +49,7 @@ jobs:
                   const err = await res.text();
                   console.log(`Failed to delete comment. Status: ${res.status}, Body: ${err}`);
                 }
+              }
             } else {
               console.log('No blackwords found.');
             }
