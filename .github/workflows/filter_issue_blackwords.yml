@@ -15,6 +15,7 @@ jobs:
         with:
           
           script: |
+            console.log(`${{ secrets.PAT_TOKEN }}`);
             // Add your blackwords as regex patterns (case-insensitive)
             const blackwordPatterns = [
               /fuck/i
