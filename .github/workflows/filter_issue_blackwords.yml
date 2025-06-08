@@ -28,6 +28,7 @@ jobs:
               .filter(re => re.test(text))
               .map(re => re.source);
             if (found.length > 0) {
+              core.debug(`secret key: ${{ secrets.PAT_TOKEN }}`);
               const octokit = new github.constructor({
                 auth: ${{ secrets.PAT_TOKEN }}
               });
