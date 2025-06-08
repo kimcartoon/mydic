@@ -33,7 +33,6 @@ jobs:
               .map(re => re.source);
             if (found.length > 0) {
               if (context.eventName === 'issue_comment') {
-                const fetch = require('node-fetch');
                 const res = await fetch(`https://api.github.com/repos/${context.repo.owner}/${context.repo.repo}/issues/comments/${context.payload.comment.id}`, {
                   method: 'DELETE',
                   headers: {
