@@ -22,12 +22,6 @@ jobs:
             const blackwordPatterns = [
               /\bf\*?u?c?k\b/i,
               /\b((https?:\/\/)?(www\.)?[\w\-]+\.[a-z]{2,}([\/?#][^\s]*)?)\b/i,
-              /readallcomic/i,
-              /getcomic/i,
-              /readcomicsonline/i,
-              /xoxocomic/i,
-              /batcave/i,
-              /gocomic/i,
             ];
             let text = '';
             if (context.eventName === 'issues') {
